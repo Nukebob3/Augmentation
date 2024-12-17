@@ -1,10 +1,7 @@
 package net.nukebob.augment.mixin;
 
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.util.InputUtil;
 import net.minecraft.screen.slot.Slot;
 import net.nukebob.augment.Augmentation;
 import net.nukebob.augment.Ench;
@@ -23,10 +20,7 @@ public class HandledScreenMixin {
     private void drawSlot(DrawContext context, Slot slot, CallbackInfo ci) {
         ArrayList<Ench> missingEnchantments = Util.getMissingEnchantments(slot.getStack());
         if (!missingEnchantments.isEmpty()) {
-            int color = new Color(255, (int) (Math.min(missingEnchantments.size()/5f, 1.0f)*150f), 0, (int)(128*Augmentation.opacity/(float)Augmentation.maxOpacity)).getRGB();
-            int color2 = new Color(255, (int) (Math.min(missingEnchantments.size()/5f, 1.0f)*150f), 0, (int)(64*Augmentation.opacity/(float)Augmentation.maxOpacity)).getRGB();
-            context.drawBorder(slot.x, slot.y, 16, 16, color);
-            context.drawBorder(slot.x+1, slot.y+1, 14, 14, color2);
+            context.fill(slot.x, slot.y, slot.x + 16, slot.y + 16, new Color(255, 255, 255, (int)(100*(Augmentation.opacity/(float)Augmentation.maxOpacity))).getRGB());
         }
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.util.Colors;
 import net.nukebob.augment.Augmentation;
 import net.nukebob.augment.Ench;
 import net.nukebob.augment.Util;
+import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,7 +26,7 @@ public abstract class ItemStackMixin {
 
 	@Inject(method = "getTooltip", at=@At("RETURN"), cancellable = true)
 	public void getTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
-		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), KeyBindingHelper.getBoundKeyOf(Augmentation.keyBinding).getCode())) {
+		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), KeyBindingHelper.getBoundKeyOf(Augmentation.keyBindingCheck).getCode())) {
 			List<Text> tooltip = cir.getReturnValue();
 
 			if (tooltip==null) tooltip = new ArrayList<>();
