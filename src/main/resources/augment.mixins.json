@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "net.nukebob.augment.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "HandledScreenMixin",
+    "ItemStackMixin"
+  ]
+}
