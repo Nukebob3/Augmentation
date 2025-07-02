@@ -10,6 +10,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
 import net.nukebob.augment.Augmentation;
 import net.nukebob.augment.Ench;
+import net.nukebob.augment.Settings;
 import net.nukebob.augment.Util;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -39,8 +40,19 @@ public abstract class ItemStackMixin {
 			for (Ench ench : missingEnchants) {
 				tooltip.add(Text.literal(toSmallCaps(Text.translatable("enchantment."+ench.id.replace(":",".")).getString())).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN).append(Text.literal(toSmallCaps(getRomanNumerals(ench.level))).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN)));
 			}
+			ArrayList<Ench> maxedEnchantments = new ArrayList<>();
+			for (Map.Entry<String, ArrayList<Ench>> entry : Settings.loadConfig().entrySet()) {
+				if (stack.getItem().toString().equals(entry.getKey())) {
+					maxedEnchantments = entry.getValue();
+					break;
+				}
+			}
 			if (missingEnchants.isEmpty()) {
-				tooltip.add(Text.literal(toSmallCaps(Text.translatable("text.augment.maxed").getString())).withColor(2871807));
+				if (!maxedEnchantments.isEmpty()) {
+					tooltip.add(Text.literal(toSmallCaps(Text.translatable("text.augment.maxed").getString())).withColor(2871807));
+				} else {
+					tooltip.add(Text.literal(toSmallCaps(Text.translatable("text.augment.unenchantable").getString())).withColor(16720979));
+				}
 			}
 
 			cir.setReturnValue(tooltip);
