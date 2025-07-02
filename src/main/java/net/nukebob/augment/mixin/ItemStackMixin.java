@@ -11,7 +11,6 @@ import net.minecraft.util.Colors;
 import net.nukebob.augment.Augmentation;
 import net.nukebob.augment.Ench;
 import net.nukebob.augment.Util;
-import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,10 +18,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mixin(net.minecraft.item.ItemStack.class)
 public abstract class ItemStackMixin {
+	@Unique
+	private static final Map<Character, Character> smallCapsMap = new HashMap<>();
 
 	@Inject(method = "getTooltip", at=@At("RETURN"), cancellable = true)
 	public void getTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
@@ -34,7 +37,10 @@ public abstract class ItemStackMixin {
 			net.minecraft.item.ItemStack stack = (net.minecraft.item.ItemStack) (Object) this;
 			ArrayList<Ench> missingEnchants = Util.getMissingEnchantments(stack);
 			for (Ench ench : missingEnchants) {
-				tooltip.add(Text.translatable("enchantment."+ench.id.replace(":",".")).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN).append(Text.literal(getRomanNumerals(ench.level)).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN)));
+				tooltip.add(Text.literal(toSmallCaps(Text.translatable("enchantment."+ench.id.replace(":",".")).getString())).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN).append(Text.literal(toSmallCaps(getRomanNumerals(ench.level))).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN)));
+			}
+			if (missingEnchants.isEmpty()) {
+				tooltip.add(Text.literal(toSmallCaps(Text.translatable("text.augment.maxed").getString())).withColor(2871807));
 			}
 
 			cir.setReturnValue(tooltip);
@@ -55,5 +61,43 @@ public abstract class ItemStackMixin {
 			}
 		}
 		return roman.toString().equals("I") ? "" : " " + roman;
+	}
+
+	@Unique
+	private static String toSmallCaps(String input) {
+		StringBuilder result = new StringBuilder();
+		for (char ch : input.toLowerCase().toCharArray()) {
+			result.append(smallCapsMap.getOrDefault(ch, ch));
+		}
+		return result.toString();
+	}
+
+	static {
+		smallCapsMap.put('a', 'ᴀ');
+		smallCapsMap.put('b', 'ʙ');
+		smallCapsMap.put('c', 'ᴄ');
+		smallCapsMap.put('d', 'ᴅ');
+		smallCapsMap.put('e', 'ᴇ');
+		smallCapsMap.put('f', 'ꜰ');
+		smallCapsMap.put('g', 'ɢ');
+		smallCapsMap.put('h', 'ʜ');
+		smallCapsMap.put('i', 'ɪ');
+		smallCapsMap.put('j', 'ᴊ');
+		smallCapsMap.put('k', 'ᴋ');
+		smallCapsMap.put('l', 'ʟ');
+		smallCapsMap.put('m', 'ᴍ');
+		smallCapsMap.put('n', 'ɴ');
+		smallCapsMap.put('o', 'ᴏ');
+		smallCapsMap.put('p', 'ᴘ');
+		smallCapsMap.put('q', 'ǫ');
+		smallCapsMap.put('r', 'ʀ');
+		smallCapsMap.put('s', 'ѕ');
+		smallCapsMap.put('t', 'ᴛ');
+		smallCapsMap.put('u', 'ᴜ');
+		smallCapsMap.put('v', 'ᴠ');
+		smallCapsMap.put('w', 'ᴡ');
+		smallCapsMap.put('x', 'х');
+		smallCapsMap.put('y', 'ʏ');
+		smallCapsMap.put('z', 'ᴢ');
 	}
 }

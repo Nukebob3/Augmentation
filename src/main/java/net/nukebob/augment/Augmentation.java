@@ -22,13 +22,13 @@ public class Augmentation implements ClientModInitializer {
 				"key.augment.check_missing_enchants",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_LEFT_ALT,
-				KeyBinding.MISC_CATEGORY
+				"category.augment.augmentation"
 		));
 		keyBindingAll = KeyBindingHelper.registerKeyBinding(new KeyBinding(
 				"key.augment.check_all_missing_enchants",
 				InputUtil.Type.KEYSYM,
 				GLFW.GLFW_KEY_RIGHT_ALT,
-				KeyBinding.MISC_CATEGORY
+				"category.augment.augmentation"
 		));
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
