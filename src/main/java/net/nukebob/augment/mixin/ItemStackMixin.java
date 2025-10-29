@@ -30,7 +30,7 @@ public abstract class ItemStackMixin {
 
 	@Inject(method = "getTooltip", at=@At("RETURN"), cancellable = true)
 	public void getTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
-		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow().getHandle(), KeyBindingHelper.getBoundKeyOf(Augmentation.keyBindingCheck).getCode())) {
+		if (InputUtil.isKeyPressed(MinecraftClient.getInstance().getWindow(), KeyBindingHelper.getBoundKeyOf(Augmentation.keyBindingCheck).getCode())) {
 			List<Text> tooltip = cir.getReturnValue();
 
 			if (tooltip==null) tooltip = new ArrayList<>();

@@ -2,7 +2,7 @@
   "key.augment.check_missing_enchants": "Check Missing Enchantments",
   "key.augment.check_all_missing_enchants": "Check All Items Non-Maxed",
 
-  "category.augment.augmentation": "Augmentation",
+  "key.category.augment.augmentation": "Augmentation",
   "text.augment.maxed": "Maxed Item",
   "text.augment.unenchantable": "Unenchantable"
 }

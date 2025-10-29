@@ -1,145 +1,164 @@
 {
-    "items": {
-        "minecraft:leather_helmet": "templates/helmet",
-        "minecraft:chainmail_helmet": "templates/helmet",
-        "minecraft:iron_helmet": "templates/helmet",
-        "minecraft:golden_helmet": "templates/helmet",
-        "minecraft:diamond_helmet": "templates/helmet",
-        "minecraft:netherite_helmet": "templates/helmet",
-        "minecraft:turtle_helmet": "templates/helmet",
-        "minecraft:leather_chestplate": "templates/chestplate",
-        "minecraft:chainmail_chestplate": "templates/chestplate",
-        "minecraft:iron_chestplate": "templates/chestplate",
-        "minecraft:golden_chestplate": "templates/chestplate",
-        "minecraft:diamond_chestplate": "templates/chestplate",
-        "minecraft:netherite_chestplate": "templates/chestplate",
-        "minecraft:leather_leggings": "templates/leggings",
-        "minecraft:chainmail_leggings": "templates/leggings",
-        "minecraft:iron_leggings": "templates/leggings",
-        "minecraft:golden_leggings": "templates/leggings",
-        "minecraft:diamond_leggings": "templates/leggings",
-        "minecraft:netherite_leggings": "templates/leggings",
-        "minecraft:leather_boots": "templates/boots",
-        "minecraft:chainmail_boots": "templates/boots",
-        "minecraft:iron_boots": "templates/boots",
-        "minecraft:golden_boots": "templates/boots",
-        "minecraft:diamond_boots": "templates/boots",
-        "minecraft:netherite_boots": "templates/boots",
-        "minecraft:wooden_sword": "templates/sword",
-        "minecraft:stone_sword": "templates/sword",
-        "minecraft:iron_sword": "templates/sword",
-        "minecraft:golden_sword": "templates/sword",
-        "minecraft:diamond_sword": "templates/sword",
-        "minecraft:netherite_sword": "templates/sword",
-        "minecraft:wooden_axe": "templates/axe",
-        "minecraft:stone_axe": "templates/axe",
-        "minecraft:iron_axe": "templates/axe",
-        "minecraft:golden_axe": "templates/axe",
-        "minecraft:diamond_axe": "templates/axe",
-        "minecraft:netherite_axe": "templates/axe",
-        "minecraft:wooden_shovel": "templates/tool",
-        "minecraft:stone_shovel": "templates/tool",
-        "minecraft:iron_shovel": "templates/tool",
-        "minecraft:golden_shovel": "templates/tool",
-        "minecraft:diamond_shovel": "templates/tool",
-        "minecraft:netherite_shovel": "templates/tool",
-        "minecraft:wooden_pickaxe": "templates/tool",
-        "minecraft:stone_pickaxe": "templates/tool",
-        "minecraft:iron_pickaxe": "templates/tool",
-        "minecraft:golden_pickaxe": "templates/tool",
-        "minecraft:diamond_pickaxe": "templates/tool",
-        "minecraft:netherite_pickaxe": "templates/tool",
-        "minecraft:wooden_hoe": "templates/tool",
-        "minecraft:stone_hoe": "templates/tool",
-        "minecraft:iron_hoe": "templates/tool",
-        "minecraft:golden_hoe": "templates/tool",
-        "minecraft:diamond_hoe": "templates/tool",
-        "minecraft:netherite_hoe": "templates/tool",
-        "minecraft:brush":"templates/default",
-        "minecraft:elytra":"templates/default",
-        "minecraft:carrot_on_a_stick":"templates/default",
-        "minecraft:warped_fungus_on_a_stick":"templates/default",
-        "minecraft:shears":"templates/default",
-        "minecraft:shield":"templates/default",
-        "minecraft:flint_and_steel":"templates/default",
-        "minecraft:fishing_rod": {
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1,
-            "minecraft:lure":3,
-            "minecraft:luck_of_the_sea":3
-        },
-        "minecraft:mace": {
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1,
-            "minecraft:density":5,
-            "minecraft:fire_aspect":2,
-            "minecraft:wind_burst":3
-        },
-        "minecraft:trident": {
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1,
-            "minecraft:riptide":3,
-            "minecraft:impaling":5
-        },
-        "minecraft:bow": {
-            "minecraft:unbreaking":3,
-            "minecraft:infinity":1,
-            "minecraft:power":5,
-            "minecraft:flame":1,
-            "minecraft:punch":2
-        },
-        "minecraft:crossbow": {
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1,
-            "minecraft:quick_charge":3,
-            "minecraft:multishot":1
-        }
+  "items": {
+    "minecraft:leather_helmet": "templates/helmet",
+    "minecraft:copper_helmet": "templates/helmet",
+    "minecraft:chainmail_helmet": "templates/helmet",
+    "minecraft:iron_helmet": "templates/helmet",
+    "minecraft:golden_helmet": "templates/helmet",
+    "minecraft:diamond_helmet": "templates/helmet",
+    "minecraft:netherite_helmet": "templates/helmet",
+    "minecraft:turtle_helmet": "templates/helmet",
+
+    "minecraft:leather_chestplate": "templates/chestplate",
+    "minecraft:copper_chestplate": "templates/chestplate",
+    "minecraft:chainmail_chestplate": "templates/chestplate",
+    "minecraft:iron_chestplate": "templates/chestplate",
+    "minecraft:golden_chestplate": "templates/chestplate",
+    "minecraft:diamond_chestplate": "templates/chestplate",
+    "minecraft:netherite_chestplate": "templates/chestplate",
+
+    "minecraft:leather_leggings": "templates/leggings",
+    "minecraft:copper_leggings": "templates/leggings",
+    "minecraft:chainmail_leggings": "templates/leggings",
+    "minecraft:iron_leggings": "templates/leggings",
+    "minecraft:golden_leggings": "templates/leggings",
+    "minecraft:diamond_leggings": "templates/leggings",
+    "minecraft:netherite_leggings": "templates/leggings",
+
+    "minecraft:leather_boots": "templates/boots",
+    "minecraft:copper_boots": "templates/boots",
+    "minecraft:chainmail_boots": "templates/boots",
+    "minecraft:iron_boots": "templates/boots",
+    "minecraft:golden_boots": "templates/boots",
+    "minecraft:diamond_boots": "templates/boots",
+    "minecraft:netherite_boots": "templates/boots",
+
+    "minecraft:wooden_sword": "templates/sword",
+    "minecraft:stone_sword": "templates/sword",
+    "minecraft:copper_sword": "templates/sword",
+    "minecraft:iron_sword": "templates/sword",
+    "minecraft:golden_sword": "templates/sword",
+    "minecraft:diamond_sword": "templates/sword",
+    "minecraft:netherite_sword": "templates/sword",
+
+    "minecraft:wooden_axe": "templates/axe",
+    "minecraft:stone_axe": "templates/axe",
+    "minecraft:copper_axe": "templates/axe",
+    "minecraft:iron_axe": "templates/axe",
+    "minecraft:golden_axe": "templates/axe",
+    "minecraft:diamond_axe": "templates/axe",
+    "minecraft:netherite_axe": "templates/axe",
+
+    "minecraft:wooden_shovel": "templates/tool",
+    "minecraft:stone_shovel": "templates/tool",
+    "minecraft:copper_shovel": "templates/tool",
+    "minecraft:iron_shovel": "templates/tool",
+    "minecraft:golden_shovel": "templates/tool",
+    "minecraft:diamond_shovel": "templates/tool",
+    "minecraft:netherite_shovel": "templates/tool",
+
+    "minecraft:wooden_pickaxe": "templates/tool",
+    "minecraft:stone_pickaxe": "templates/tool",
+    "minecraft:copper_pickaxe": "templates/tool",
+    "minecraft:iron_pickaxe": "templates/tool",
+    "minecraft:golden_pickaxe": "templates/tool",
+    "minecraft:diamond_pickaxe": "templates/tool",
+    "minecraft:netherite_pickaxe": "templates/tool",
+
+    "minecraft:wooden_hoe": "templates/tool",
+    "minecraft:stone_hoe": "templates/tool",
+    "minecraft:copper_hoe": "templates/tool",
+    "minecraft:iron_hoe": "templates/tool",
+    "minecraft:golden_hoe": "templates/tool",
+    "minecraft:diamond_hoe": "templates/tool",
+    "minecraft:netherite_hoe": "templates/tool",
+
+    "minecraft:brush": "templates/default",
+    "minecraft:elytra": "templates/default",
+    "minecraft:carrot_on_a_stick": "templates/default",
+    "minecraft:warped_fungus_on_a_stick": "templates/default",
+    "minecraft:shears": "templates/default",
+    "minecraft:shield": "templates/default",
+    "minecraft:flint_and_steel": "templates/default",
+
+    "minecraft:fishing_rod": {
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1,
+      "minecraft:lure": 3,
+      "minecraft:luck_of_the_sea": 3
     },
-    "templates": {
-        "default": {
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1
-        },
-        "tool": {
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1,
-            "minecraft:efficiency":5,
-            "minecraft:silk_touch":1
-        },
-        "axe": {
-            "parent": "templates/tool",
-            "minecraft:sharpness": 5
-        },
-        "armor": {
-            "minecraft:protection":4,
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1
-        },
-        "helmet": {
-            "parent": "templates/armor",
-            "minecraft:respiration":3,
-            "minecraft:aqua_affinity":1
-        },
-        "chestplate": {
-            "parent": "templates/armor"
-        },
-        "leggings": {
-            "parent": "templates/armor",
-            "minecraft:swift_sneak":3
-        },
-        "boots": {
-            "parent": "templates/armor",
-            "minecraft:feather_falling":4,
-            "minecraft:depth_strider":3,
-            "minecraft:soul_speed":3
-        },
-        "sword": {
-            "minecraft:unbreaking":3,
-            "minecraft:mending":1,
-            "minecraft:sharpness":5,
-            "minecraft:sweeping_edge":3,
-            "minecraft:fire_aspect":2,
-            "minecraft:looting":3
-        }
+    "minecraft:mace": {
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1,
+      "minecraft:density": 5,
+      "minecraft:fire_aspect": 2,
+      "minecraft:wind_burst": 3
+    },
+    "minecraft:trident": {
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1,
+      "minecraft:riptide": 3,
+      "minecraft:impaling": 5
+    },
+    "minecraft:bow": {
+      "minecraft:unbreaking": 3,
+      "minecraft:infinity": 1,
+      "minecraft:power": 5,
+      "minecraft:flame": 1,
+      "minecraft:punch": 2
+    },
+    "minecraft:crossbow": {
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1,
+      "minecraft:quick_charge": 3,
+      "minecraft:multishot": 1
     }
+  },
+  "templates": {
+    "default": {
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1
+    },
+    "tool": {
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1,
+      "minecraft:efficiency": 5,
+      "minecraft:silk_touch": 1
+    },
+    "axe": {
+      "parent": "templates/tool",
+      "minecraft:sharpness": 5
+    },
+    "armor": {
+      "minecraft:protection": 4,
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1
+    },
+    "helmet": {
+      "parent": "templates/armor",
+      "minecraft:respiration": 3,
+      "minecraft:aqua_affinity": 1
+    },
+    "chestplate": {
+      "parent": "templates/armor"
+    },
+    "leggings": {
+      "parent": "templates/armor",
+      "minecraft:swift_sneak": 3
+    },
+    "boots": {
+      "parent": "templates/armor",
+      "minecraft:feather_falling": 4,
+      "minecraft:depth_strider": 3,
+      "minecraft:soul_speed": 3
+    },
+    "sword": {
+      "minecraft:unbreaking": 3,
+      "minecraft:mending": 1,
+      "minecraft:sharpness": 5,
+      "minecraft:sweeping_edge": 3,
+      "minecraft:fire_aspect": 2,
+      "minecraft:looting": 3
+    }
+  }
 }
