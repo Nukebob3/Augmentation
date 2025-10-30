@@ -36,7 +36,7 @@ public abstract class ItemStackMixin {
 			if (tooltip==null) tooltip = new ArrayList<>();
 
 			net.minecraft.item.ItemStack stack = (net.minecraft.item.ItemStack) (Object) this;
-			ArrayList<Ench> missingEnchants = Util.getMissingEnchantments(stack);
+			List<Ench> missingEnchants = Util.getMissingEnchantments(stack);
 			for (Ench ench : missingEnchants) {
 				tooltip.add(Text.literal(toSmallCaps(Text.translatable("enchantment."+ench.id.replace(":",".")).getString())).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN).append(Text.literal(toSmallCaps(getRomanNumerals(ench.level))).withColor(ench.extra ? Colors.YELLOW : Colors.GREEN)));
 			}

@@ -12,13 +12,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(HandledScreen.class)
 public class HandledScreenMixin {
     @Inject(method = "drawSlot", at = @At("HEAD"))
     private void drawSlot(DrawContext context, Slot slot, CallbackInfo ci) {
-        ArrayList<Ench> missingEnchantments = Util.getMissingEnchantments(slot.getStack());
+        List<Ench> missingEnchantments = Util.getMissingEnchantments(slot.getStack());
         if (!missingEnchantments.isEmpty()) {
             context.fill(slot.x, slot.y, slot.x + 16, slot.y + 16, new Color(255, 255, 255, (int)(100*(Augmentation.opacity/(float)Augmentation.maxOpacity))).getRGB());
         }

@@ -7,25 +7,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 
 public class Util {
-    public static ArrayList<Ench> getMissingEnchantments(ItemStack stack) {
+    public static List<Ench> getMissingEnchantments(ItemStack stack) {
         ArrayList<Ench> currentEnchantments = new ArrayList<>();
         for (Object2IntMap.Entry<RegistryEntry<Enchantment>> entry : EnchantmentHelper.getEnchantments(stack).getEnchantmentEntries()) {
             currentEnchantments.add(new Ench(entry.getKey().getIdAsString(), entry.getIntValue()));
         }
 
-        ArrayList<Ench> maxedEnchantments = new ArrayList<>();
-        ArrayList<Ench> output = new ArrayList<>();
-        for (Map.Entry<String, ArrayList<Ench>> entry : Settings.loadConfig().entrySet()) {
-            if (stack.getItem().toString().equals(entry.getKey())) {
-                maxedEnchantments = entry.getValue();
-                output = new ArrayList<>(entry.getValue());
-                break;
-            }
-        }
+        List<Ench> maxedEnchantments = Settings.loadConfig()
+                .getOrDefault(stack.getItem().toString(), new ArrayList<>());
+        List<Ench> output = new ArrayList<>(maxedEnchantments);
 
         for (Ench ench : maxedEnchantments) {
             for (Ench cEnch : currentEnchantments) {
@@ -45,17 +39,15 @@ public class Util {
         return output;
     }
 
-    public static void removeIncompatible(ArrayList<Ench> maxedEnchants, ArrayList<Ench> currentEnchants) {
+    public static void removeIncompatible(List<Ench> maxedEnchants, ArrayList<Ench> currentEnchants) {
         for (Ench e : currentEnchants) {
             switch (e.id) {
                 case "minecraft:fortune": {
-                    if (hasEnchant(maxedEnchants, "minecraft:silk_touch") != null) {
-                        Integer pos = hasEnchant(maxedEnchants, "minecraft:silk_touch");
-                        if (pos != null) {
-                            maxedEnchants.remove(pos.intValue());
-                            if (e.level < 3) {
-                                maxedEnchants.add(pos, new Ench(e.id, 3, true));
-                            }
+                    Integer pos = hasEnchant(maxedEnchants, "minecraft:silk_touch");
+                    if (pos != null) {
+                        maxedEnchants.remove(pos.intValue());
+                        if (e.level < 3) {
+                            maxedEnchants.add(pos, new Ench(e.id, 3, true));
                         }
                     }
                 } break;
@@ -118,49 +110,43 @@ public class Util {
                     }
                 } break;
                 case "minecraft:loyalty": {
-                    if (hasEnchant(maxedEnchants, "minecraft:riptide") != null) {
-                        Integer pos = hasEnchant(maxedEnchants, "minecraft:riptide");
-                        if (pos != null) {
-                            maxedEnchants.remove(pos.intValue());
-                            if (e.level < 3) {
-                                maxedEnchants.add(pos, new Ench(e.id, 3, true));
-                            }
-                            if (hasEnchant(currentEnchants, "minecraft:channeling") == null) {
-                                maxedEnchants.add(new Ench("minecraft:channeling", 1));
-                            }
+                    Integer pos = hasEnchant(maxedEnchants, "minecraft:riptide");
+                    if (pos != null) {
+                        maxedEnchants.remove(pos.intValue());
+                        if (e.level < 3) {
+                            maxedEnchants.add(pos, new Ench(e.id, 3, true));
+                        }
+                        if (hasEnchant(currentEnchants, "minecraft:channeling") == null) {
+                            maxedEnchants.add(new Ench("minecraft:channeling", 1));
                         }
                     }
                 } break;
                 case "minecraft:channeling": {
-                    if (hasEnchant(maxedEnchants, "minecraft:riptide") != null) {
-                        Integer pos = hasEnchant(maxedEnchants, "minecraft:riptide");
-                        if (pos != null) {
-                            maxedEnchants.remove(pos.intValue());
-                            if (hasEnchant(currentEnchants, "minecraft:loyalty") == null) {
-                                maxedEnchants.add(new Ench("minecraft:loyalty", 3));
-                            } else {
-                                Integer pos2 = hasEnchant(currentEnchants, "minecraft:loyalty");
-                                if (pos2 != null && maxedEnchants.get(pos2).level < 3) {
-                                    maxedEnchants.add(new Ench("minecraft:loyalty", 3, true));
-                                }
+                    Integer pos = hasEnchant(maxedEnchants, "minecraft:riptide");
+                    if (pos != null) {
+                        maxedEnchants.remove(pos.intValue());
+                        if (hasEnchant(currentEnchants, "minecraft:loyalty") == null) {
+                            maxedEnchants.add(new Ench("minecraft:loyalty", 3));
+                        } else {
+                            Integer pos2 = hasEnchant(currentEnchants, "minecraft:loyalty");
+                            if (pos2 != null && maxedEnchants.get(pos2).level < 3) {
+                                maxedEnchants.add(new Ench("minecraft:loyalty", 3, true));
                             }
                         }
                     }
                 } break;
                 case "minecraft:riptide": {
                     boolean added = false;
-                    if (hasEnchant(maxedEnchants, "minecraft:loyalty") != null) {
-                        Integer pos = hasEnchant(maxedEnchants, "minecraft:loyalty");
-                        if (pos != null) {
-                            maxedEnchants.remove(pos.intValue());
-                            if (e.level < 3) {
-                                added = true;
-                                maxedEnchants.add(pos, new Ench(e.id, 3, true));
-                            }
+                    Integer pos = hasEnchant(maxedEnchants, "minecraft:loyalty");
+                    if (pos != null) {
+                        maxedEnchants.remove(pos.intValue());
+                        if (e.level < 3) {
+                            added = true;
+                            maxedEnchants.add(pos, new Ench(e.id, 3, true));
                         }
                     }
                     if (hasEnchant(maxedEnchants, "minecraft:channeling") != null) {
-                        Integer pos = hasEnchant(maxedEnchants, "minecraft:loyalty");
+                        pos = hasEnchant(maxedEnchants, "minecraft:loyalty");
                         if (pos != null) {
                             maxedEnchants.remove(pos.intValue());
                             if (e.level < 3 && !added) {
@@ -171,7 +157,7 @@ public class Util {
                 } break;
                 case "minecraft:density": {
                     if (hasEnchant(maxedEnchants, new String[]{"minecraft:breach", "minecraft:smite", "minecraft:bane_of_arthropods"}) != null) {
-                        Integer pos = hasEnchant(maxedEnchants, "minecraft:riptide");
+                        Integer pos = hasEnchant(maxedEnchants, "minecraft:density");
                         if (pos != null) {
                             maxedEnchants.remove(pos.intValue());
                             if (e.level < 5) {
@@ -182,7 +168,7 @@ public class Util {
                 } break;
                 case "minecraft:breach": {
                     if (hasEnchant(maxedEnchants, new String[]{"minecraft:density", "minecraft:smite", "minecraft:bane_of_arthropods"}) != null) {
-                        Integer pos = hasEnchant(maxedEnchants, "minecraft:riptide");
+                        Integer pos = hasEnchant(maxedEnchants, "minecraft:breach");
                         if (pos != null) {
                             maxedEnchants.remove(pos.intValue());
                             if (e.level < 4) {
@@ -195,7 +181,7 @@ public class Util {
         }
     }
 
-    public static Integer hasEnchant(ArrayList<Ench> list, String ench) {
+    public static Integer hasEnchant(List<Ench> list, String ench) {
         for (Ench e : list) {
             if (Objects.equals(e.id, ench)) {
                 return list.indexOf(e);
@@ -204,7 +190,7 @@ public class Util {
         return null;
     }
 
-    public static Integer hasEnchant(ArrayList<Ench> list, String[] enches) {
+    public static Integer hasEnchant(List<Ench> list, String[] enches) {
         for (Ench e : list) {
             for (String e2 : enches) {
                 if (Objects.equals(e.id, e2)) {

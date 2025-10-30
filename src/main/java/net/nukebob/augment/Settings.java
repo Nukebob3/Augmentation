@@ -14,35 +14,6 @@ public class Settings {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final File CONFIG_FILE = new File("config/augmentation.json");
 
-    /* my version
-    public static Map<String, ArrayList<Ench>> loadConfig() {
-        Map<String, ArrayList<Ench>> itemsList = new HashMap<>();
-        try {
-            FileReader reader = new FileReader(CONFIG_FILE);
-            JsonObject root = GSON.fromJson(reader, JsonObject.class);
-            JsonObject items = root.getAsJsonObject("items");
-            JsonObject templates = root.getAsJsonObject("templates");
-            for (Map.Entry<String, JsonElement> entry : items.entrySet()) {
-                ArrayList<Ench> enchList = new ArrayList<>();
-                String item = entry.getKey();
-                JsonElement value = entry.getValue();
-                if (value.isJsonObject()) {
-                    for (Map.Entry<String, JsonElement> entry1 : value.getAsJsonObject().entrySet()) {
-                        enchList.add(new Ench(entry1.getKey(), entry1.getValue().getAsInt()));
-                    }
-                } else {
-                    for (Map.Entry<String, JsonElement> entry1 : templates.getAsJsonObject(value.toString().replace("templates/","").replace("\"","")).entrySet()) {
-                        try {
-                            enchList.add(new Ench(entry1.getKey(), entry1.getValue().getAsInt()));
-                        } catch (Exception ignored) {}
-                    }
-                }
-                itemsList.put(item, enchList);
-            }
-        } catch (Error | FileNotFoundException ignored) {}
-        return itemsList;
-    }*/
-
     public static Map<String, ArrayList<Ench>> loadConfig() {
         Map<String, ArrayList<Ench>> itemsList = new HashMap<>();
         try {
