@@ -8,8 +8,8 @@
 		"Nukebob3"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://youtube.com/nukebob3",
+		"sources": "https://github.com/Nukebob3/Augmentation"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/augment/icon.png",
@@ -24,7 +24,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.16.9",
-		"minecraft": ">=1.21.4",
+		"minecraft": ">=1.21.9",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
